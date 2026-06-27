@@ -8,6 +8,7 @@
 html {
   scroll-behavior: smooth;
   text-rendering: optimizeLegibility;
+  scrollbar-gutter: stable;
 }
 
 body {
@@ -63,7 +64,7 @@ header p{
 }
 
 header h1 {
-    color: #dfdfdf;
+    color: #ff6e2b;
     font-size: 4.1rem;
 }
 
@@ -75,19 +76,22 @@ header h2{
     color:#f8f8f8;
 }
 
-.letragradiente {
+header h2:hover .letragradiente {
+    transition: 0.4s;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
     background-image: linear-gradient(to right, #ff6e2b, #0095f8);
 }
 
-.palavracoloridaum {
+header h2:hover .palavracoloridaum {
     color: rgb(255, 110, 43);
+    transition: 0.4s;
 }
 
-.palavracoloridadois {
-    color: #279deb;
+header h2:hover .palavracoloridadois {
+    color: rgb(0, 149, 248);
+    transition: 0.4s;
 }
 
 
@@ -233,5 +237,32 @@ footer p{
     margin: 5px;
     border-radius: 2px;
     transition: 1s;
+}
+
+@view-transition{
+    navigation: auto
+}
+
+::view-transition-group(root){
+    animation-duration: 1s;
+}
+
+::view-transition-old(root){
+    animation-name: exiting;
+}
+
+::view-transition-new(root){
+   animation-name: entering;
+}
+
+@keyframes exiting {
+    to{
+        transform: translateX(-100%);
+    }
+}
+@keyframes entering {
+    from{
+        transform: translateX(100%);
+    }
 }
 
